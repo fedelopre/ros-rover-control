@@ -1,10 +1,6 @@
 To-do LIST
 
-- Controllare i tipi di dati che vengono pubblicati
-- Crea pacchetto mapping_node, localization_node, navigation_node
-
-
-
+- Crea la func Come_back_home in navigation node
 
 
 
