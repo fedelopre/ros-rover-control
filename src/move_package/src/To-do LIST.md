@@ -1,9 +1,8 @@
 To-do LIST
 
 - Controllare i tipi di dati che vengono pubblicati
-- inserire i subscriber a inizio sistemaoperativo
+- Crea pacchetto mapping_node, localization_node, navigation_node
 
-- Non importa se gz pubblica un twist e poi il sistema operativo pubblica un int, la trasformazione sarebbe da inserire nel sist.op.
 
 
 

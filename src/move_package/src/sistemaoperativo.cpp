@@ -2,6 +2,7 @@
 #include "std_msgs/msg/string.hpp"
 #include <chrono>
 #include <memory>
+
 using namespace std::chrono_literals;
 
 class SistemaOperativo : public rclcpp::Node
@@ -53,24 +54,26 @@ class SistemaOperativo : public rclcpp::Node
         }
     private:
         void timer_callback() {
+            
+            /*Ora guardo tutte le cose che mi sono arrivate e decido quale pubblicare sul topic del robot reale in base alla priorità */
 
             auto scan_msg = std_msgs::msg::String();
-            scan_msg.data = "Scan: VALUES"; //sostituirai poi con i valori pubblicati da gazebo facendo da sub
+            scan_msg.data = scan_risposta; 
             scan_publisher->publish(scan_msg);
             RCLCPP_INFO(this->get_logger(), "Published: '%s'", scan_msg.data.c_str());
             
 
             auto message = std_msgs::msg::String();
-            message.data = "Position [0.0, 0.0, 0.0] ";
+            message.data = posizione_risposta;
             RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
             posizione_publisher->publish(message);
             
             auto vel_msg = std_msgs::msg::String();
-            vel_msg.data = "Velocità: VALUES";
+            vel_msg.data = vel_risposta;
             vel_publisher->publish(vel_msg);
             RCLCPP_INFO(this->get_logger(), "Published: '%s'", vel_msg.data.c_str());
 
-            /*Ora guardo tutte le cose che mi sono arrivate e decido quale pubblicare sul topic del robot reale in base alla priorità */
+            
             
             
 
