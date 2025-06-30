@@ -1,0 +1,93 @@
+[0.000000] (-) TimerEvent: {}
+[0.000851] (move_package) JobQueued: {'identifier': 'move_package', 'dependencies': OrderedDict()}
+[0.000920] (move_package) JobStarted: {'identifier': 'move_package'}
+[0.021503] (move_package) JobProgress: {'identifier': 'move_package', 'progress': 'cmake'}
+[0.025041] (move_package) JobProgress: {'identifier': 'move_package', 'progress': 'build'}
+[0.025102] (move_package) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/fedelopre/Downloads/real-proj/cpp_proj/build/move_package', '--', '-j3', '-l3'], 'cwd': '/home/fedelopre/Downloads/real-proj/cpp_proj/build/move_package', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'fedelopre', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'wayland', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/fedelopre', 'OLDPWD': '/home/fedelopre', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2110', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/fedelopre/Downloads/real-proj/cpp_proj/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'fedelopre', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'fedelopre', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/fedelin:@/tmp/.ICE-unix/2078,unix/fedelin:/tmp/.ICE-unix/2078', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/8d92fb08_19ee_406d_9fc2_72b468223aba', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.C29872', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.104', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/fedelopre/Downloads/real-proj/cpp_proj/install/move_package:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'IGN_GAZEBO_RESOURCE_PATH': '/opt/ros/jazzy/share', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/fedelopre/Downloads/real-proj/cpp_proj/build/move_package', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/home/fedelopre/Downloads/real-proj/cpp_proj/install/move_package:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.100502] (-) TimerEvent: {}
+[0.198342] (move_package) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/sistemaoperativo.dir/src/sistemaoperativo.cpp.o\x1b[0m\n'}
+[0.200601] (-) TimerEvent: {}
+[0.302605] (-) TimerEvent: {}
+[0.411691] (-) TimerEvent: {}
+[0.512032] (-) TimerEvent: {}
+[0.616488] (-) TimerEvent: {}
+[0.722095] (-) TimerEvent: {}
+[0.826646] (-) TimerEvent: {}
+[0.929087] (-) TimerEvent: {}
+[1.033707] (-) TimerEvent: {}
+[1.137986] (-) TimerEvent: {}
+[1.241412] (-) TimerEvent: {}
+[1.342974] (-) TimerEvent: {}
+[1.445497] (-) TimerEvent: {}
+[1.548970] (-) TimerEvent: {}
+[1.655614] (-) TimerEvent: {}
+[1.756039] (-) TimerEvent: {}
+[1.863369] (-) TimerEvent: {}
+[1.967845] (-) TimerEvent: {}
+[2.075250] (-) TimerEvent: {}
+[2.177814] (-) TimerEvent: {}
+[2.284193] (-) TimerEvent: {}
+[2.386819] (-) TimerEvent: {}
+[2.491142] (-) TimerEvent: {}
+[2.596741] (-) TimerEvent: {}
+[2.700118] (-) TimerEvent: {}
+[2.805706] (-) TimerEvent: {}
+[2.908084] (-) TimerEvent: {}
+[3.014704] (-) TimerEvent: {}
+[3.120006] (-) TimerEvent: {}
+[3.224405] (-) TimerEvent: {}
+[3.328889] (-) TimerEvent: {}
+[3.433355] (-) TimerEvent: {}
+[3.537844] (-) TimerEvent: {}
+[3.645337] (-) TimerEvent: {}
+[3.748674] (-) TimerEvent: {}
+[3.850188] (-) TimerEvent: {}
+[3.953718] (-) TimerEvent: {}
+[4.056722] (-) TimerEvent: {}
+[4.159731] (-) TimerEvent: {}
+[4.265320] (-) TimerEvent: {}
+[4.366728] (-) TimerEvent: {}
+[4.469377] (-) TimerEvent: {}
+[4.572844] (-) TimerEvent: {}
+[4.679236] (-) TimerEvent: {}
+[4.779679] (-) TimerEvent: {}
+[4.884331] (-) TimerEvent: {}
+[4.986811] (-) TimerEvent: {}
+[5.091041] (-) TimerEvent: {}
+[5.191709] (-) TimerEvent: {}
+[5.293460] (move_package) StderrLine: {'line': b'\x1b[01m\x1b[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KMinimalPublisher::\x1b[01;32m\x1b[KMinimalPublisher\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.293772] (-) TimerEvent: {}
+[5.293933] (move_package) StderrLine: {'line': b'\x1b[01m\x1b[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:12:56:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kclass \xe2\x80\x98\x1b[01m\x1b[KMinimalPublisher\x1b[m\x1b[K\xe2\x80\x99 does not have any field named \xe2\x80\x98\x1b[01m\x1b[Kcount_\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.298107] (move_package) StderrLine: {'line': b'   12 |         MinimalPublisher() : Node("sistemaoperativo"), \x1b[01;31m\x1b[Kcount_\x1b[m\x1b[K(0) {\n'}
+[5.298331] (move_package) StderrLine: {'line': b'      |                                                        \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[5.328081] (move_package) StderrLine: {'line': b'\x1b[01m\x1b[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid MinimalPublisher::\x1b[01;32m\x1b[Ktimer_callback\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.329807] (move_package) StderrLine: {'line': b'\x1b[01m\x1b[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:20:69:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcount_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.330032] (move_package) StderrLine: {'line': b'   20 |         message.data = "Position [0.0, 0.0, 0.0] " + std::to_string(\x1b[01;31m\x1b[Kcount_\x1b[m\x1b[K++);\n'}
+[5.330252] (move_package) StderrLine: {'line': b'      |                                                                     \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[5.393868] (-) TimerEvent: {}
+[5.497307] (-) TimerEvent: {}
+[5.599823] (-) TimerEvent: {}
+[5.704153] (-) TimerEvent: {}
+[5.808609] (-) TimerEvent: {}
+[5.914118] (-) TimerEvent: {}
+[6.021564] (-) TimerEvent: {}
+[6.124016] (-) TimerEvent: {}
+[6.225783] (-) TimerEvent: {}
+[6.330946] (-) TimerEvent: {}
+[6.436598] (-) TimerEvent: {}
+[6.540931] (-) TimerEvent: {}
+[6.648282] (-) TimerEvent: {}
+[6.750864] (-) TimerEvent: {}
+[6.856204] (-) TimerEvent: {}
+[6.961900] (-) TimerEvent: {}
+[7.066197] (-) TimerEvent: {}
+[7.166908] (-) TimerEvent: {}
+[7.270183] (-) TimerEvent: {}
+[7.373042] (-) TimerEvent: {}
+[7.482101] (-) TimerEvent: {}
+[7.492832] (move_package) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/sistemaoperativo.dir/build.make:76: CMakeFiles/sistemaoperativo.dir/src/sistemaoperativo.cpp.o] Error 1\n'}
+[7.495803] (move_package) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/sistemaoperativo.dir/all] Error 2\n'}
+[7.496869] (move_package) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[7.508964] (move_package) CommandEnded: {'returncode': 2}
+[7.532642] (move_package) JobEnded: {'identifier': 'move_package', 'rc': 2}
+[7.544977] (-) EventReactorShutdown: {}

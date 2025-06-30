@@ -1,0 +1,11 @@
+[01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:[m[K In constructor ‘[01m[KMinimalPublisher::[01;32m[KMinimalPublisher[m[K()[m[K’:
+[01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:12:56:[m[K [01;31m[Kerror: [m[Kclass ‘[01m[KMinimalPublisher[m[K’ does not have any field named ‘[01m[Kcount_[m[K’
+   12 |         MinimalPublisher() : Node("sistemaoperativo"), [01;31m[Kcount_[m[K(0) {
+      |                                                        [01;31m[K^~~~~~[m[K
+[01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:[m[K In member function ‘[01m[Kvoid MinimalPublisher::[01;32m[Ktimer_callback[m[K()[m[K’:
+[01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:20:69:[m[K [01;31m[Kerror: [m[K‘[01m[Kcount_[m[K’ was not declared in this scope
+   20 |         message.data = "Position [0.0, 0.0, 0.0] " + std::to_string([01;31m[Kcount_[m[K++);
+      |                                                                     [01;31m[K^~~~~~[m[K
+gmake[2]: *** [CMakeFiles/sistemaoperativo.dir/build.make:76: CMakeFiles/sistemaoperativo.dir/src/sistemaoperativo.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/sistemaoperativo.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

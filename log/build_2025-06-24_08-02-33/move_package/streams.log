@@ -1,0 +1,21 @@
+[0.026s] Invoking command in '/home/fedelopre/Downloads/real-proj/cpp_proj/build/move_package': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/fedelopre/Downloads/real-proj/cpp_proj/build/move_package -- -j3 -l3
+[0.084s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.658s] -- Found rclcpp: 28.1.9 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.848s] -- Found rosidl_generator_c: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.912s] -- Found rosidl_generator_cpp: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.989s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.071s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.404s] -- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[1.418s] -- Found rmw_fastrtps_cpp: 8.4.2 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[1.697s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[1.764s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[1.836s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[2.124s] [31mCMake Error at /opt/ros/jazzy/share/ament_cmake_target_dependencies/cmake/ament_target_dependencies.cmake:42 (message):
+[2.124s]   ament_target_dependencies() the first argument must be a valid target name
+[2.124s] Call Stack (most recent call first):
+[2.124s]   CMakeLists.txt:17 (ament_target_dependencies)
+[2.127s] 
+[2.127s] -- Configuring incomplete, errors occurred!
+[2.127s] [0m
+[2.142s] gmake: *** [Makefile:267: cmake_check_build_system] Error 1
+[2.149s] Invoked command in '/home/fedelopre/Downloads/real-proj/cpp_proj/build/move_package' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/fedelopre/Downloads/real-proj/cpp_proj/build/move_package -- -j3 -l3

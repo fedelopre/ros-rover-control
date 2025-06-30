@@ -1,0 +1,14 @@
+[0.026s] Invoking command in '/home/fedelopre/Downloads/real-proj/cpp_proj/build/move_package': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/fedelopre/Downloads/real-proj/cpp_proj/build/move_package -- -j3 -l3
+[0.198s] [ 50%] [32mBuilding CXX object CMakeFiles/sistemaoperativo.dir/src/sistemaoperativo.cpp.o[0m
+[5.293s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:[m[K In constructor ‘[01m[KMinimalPublisher::[01;32m[KMinimalPublisher[m[K()[m[K’:
+[5.293s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:12:56:[m[K [01;31m[Kerror: [m[Kclass ‘[01m[KMinimalPublisher[m[K’ does not have any field named ‘[01m[Kcount_[m[K’
+[5.297s]    12 |         MinimalPublisher() : Node("sistemaoperativo"), [01;31m[Kcount_[m[K(0) {
+[5.298s]       |                                                        [01;31m[K^~~~~~[m[K
+[5.327s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:[m[K In member function ‘[01m[Kvoid MinimalPublisher::[01;32m[Ktimer_callback[m[K()[m[K’:
+[5.329s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:20:69:[m[K [01;31m[Kerror: [m[K‘[01m[Kcount_[m[K’ was not declared in this scope
+[5.329s]    20 |         message.data = "Position [0.0, 0.0, 0.0] " + std::to_string([01;31m[Kcount_[m[K++);
+[5.329s]       |                                                                     [01;31m[K^~~~~~[m[K
+[7.492s] gmake[2]: *** [CMakeFiles/sistemaoperativo.dir/build.make:76: CMakeFiles/sistemaoperativo.dir/src/sistemaoperativo.cpp.o] Error 1
+[7.495s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/sistemaoperativo.dir/all] Error 2
+[7.496s] gmake: *** [Makefile:146: all] Error 2
+[7.510s] Invoked command in '/home/fedelopre/Downloads/real-proj/cpp_proj/build/move_package' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/fedelopre/Downloads/real-proj/cpp_proj/build/move_package -- -j3 -l3

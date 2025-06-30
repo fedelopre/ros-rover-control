@@ -1,0 +1,212 @@
+[0.031s] Invoking command in '/home/fedelopre/Downloads/real-proj/cpp_proj/build/move_package': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/fedelopre/Downloads/real-proj/cpp_proj/build/move_package -- -j3 -l3
+[0.210s] [ 50%] [32mBuilding CXX object CMakeFiles/sistemaoperativo.dir/src/sistemaoperativo.cpp.o[0m
+[5.192s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:[m[K In constructor ‘[01m[KSistemaOperativo::[01;32m[KSistemaOperativo[m[K()[m[K’:
+[5.194s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:18:82:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kstd_msgs::msg::String_<std::allocator<void> >::String_(const char [4], int)[m[K’
+[5.194s]    18 | vel_publisher = this->create_publisher<std_msgs::msg::String("vel",10[01;31m[K)[m[K;
+[5.194s]       |                                                                      [01;31m[K^[m[K
+[5.195s] 
+[5.195s] In file included from [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/string.hpp:7[m[K,
+[5.195s]                  from [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:2[m[K:
+[5.197s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:48:12:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd_msgs::msg::String_<ContainerAllocator>::[01;32m[KString_[m[K(const ContainerAllocator&, rosidl_runtime_cpp::MessageInitialization) [35m[K[with ContainerAllocator = std::allocator<void>][m[K[m[K’
+[5.198s]    48 |   explicit [01;36m[KString_[m[K(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
+[5.198s]       |            [01;36m[K^~~~~~~[m[K
+[5.198s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:48:47:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst char [4][m[K’ to ‘[01m[Kconst std::allocator<void>&[m[K’
+[5.199s]    48 |   explicit String_([01;36m[Kconst ContainerAllocator & _alloc[m[K, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
+[5.202s]       |                    [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[5.203s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:39:12:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd_msgs::msg::String_<ContainerAllocator>::[01;32m[KString_[m[K(rosidl_runtime_cpp::MessageInitialization) [35m[K[with ContainerAllocator = std::allocator<void>][m[K[m[K’
+[5.203s]    39 |   explicit [01;36m[KString_[m[K(rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
+[5.203s]       |            [01;36m[K^~~~~~~[m[K
+[5.204s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:39:12:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 2 provided
+[5.204s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:35:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd_msgs::msg::String_<std::allocator<void> >::[01;32m[KString_[m[K(const std_msgs::msg::String_<std::allocator<void> >&)[m[K’
+[5.204s]    35 | struct [01;36m[KString_[m[K
+[5.204s]       |        [01;36m[K^~~~~~~[m[K
+[5.207s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:35:8:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 2 provided
+[5.207s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:35:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd_msgs::msg::String_<std::allocator<void> >::[01;32m[KString_[m[K(std_msgs::msg::String_<std::allocator<void> >&&)[m[K’
+[5.208s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:35:8:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 2 provided
+[5.208s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:18:35:[m[K [01;31m[Kerror: [m[Kparse error in template argument list
+[5.208s]    18 |             vel_publisher = this->[01;31m[Kcreate_publisher<std_msgs::msg::String("vel",10)[m[K;
+[5.208s]       |                                   [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[5.213s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:18:35:[m[K [01;31m[Kerror: [m[Kno match for ‘[01m[Koperator=[m[K’ (operand types are ‘[01m[Krclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >::SharedPtr[m[K’ {aka ‘[01m[Kstd::shared_ptr<rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > > >[m[K’} and ‘[01m[K<unresolved overloaded function type>[m[K’)
+[5.213s] In file included from [01m[K/usr/include/c++/13/memory:80[m[K,
+[5.214s]                  from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp:169[m[K,
+[5.214s]                  from [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:1[m[K:
+[5.217s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:418:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Yp> std::shared_ptr<_Tp>::_Assignable<const std::shared_ptr<_Yp>&> std::shared_ptr<_Tp>::[01;32m[Koperator=[m[K(const std::shared_ptr<_Yp>&) [35m[K[with _Tp = rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >][m[K[m[K’
+[5.217s]   418 |         [01;36m[Koperator[m[K=(const shared_ptr<_Yp>& __r) noexcept
+[5.217s]       |         [01;36m[K^~~~~~~~[m[K
+[5.218s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:418:9:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[5.218s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:18:35:[m[K [01;36m[Knote: [m[K  couldn’t deduce template parameter ‘[01m[K_Yp[m[K’
+[5.218s]    18 |             vel_publisher = this->[01;36m[Kcreate_publisher<std_msgs::msg::String("vel",10)[m[K;
+[5.218s]       |                                   [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[5.219s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:429:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Yp> std::shared_ptr<_Tp>::_Assignable<std::auto_ptr<_Up> > std::shared_ptr<_Tp>::[01;32m[Koperator=[m[K(std::auto_ptr<_Up>&&) [35m[K[with _Tp = rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >][m[K[m[K’
+[5.219s]   429 |         [01;36m[Koperator[m[K=(auto_ptr<_Yp>&& __r)
+[5.219s]       |         [01;36m[K^~~~~~~~[m[K
+[5.219s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:429:9:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[5.220s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:18:35:[m[K [01;36m[Knote: [m[K  couldn’t deduce template parameter ‘[01m[K_Yp[m[K’
+[5.220s]    18 |             vel_publisher = this->[01;36m[Kcreate_publisher<std_msgs::msg::String("vel",10)[m[K;
+[5.220s]       |                                   [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[5.220s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:446:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Yp> std::shared_ptr<_Tp>::_Assignable<std::shared_ptr<_Yp> > std::shared_ptr<_Tp>::[01;32m[Koperator=[m[K(std::shared_ptr<_Yp>&&) [35m[K[with _Tp = rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >][m[K[m[K’
+[5.221s]   446 |         [01;36m[Koperator[m[K=(shared_ptr<_Yp>&& __r) noexcept
+[5.221s]       |         [01;36m[K^~~~~~~~[m[K
+[5.221s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:446:9:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[5.221s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:18:35:[m[K [01;36m[Knote: [m[K  couldn’t deduce template parameter ‘[01m[K_Yp[m[K’
+[5.222s]    18 |             vel_publisher = this->[01;36m[Kcreate_publisher<std_msgs::msg::String("vel",10)[m[K;
+[5.222s]       |                                   [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[5.222s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:454:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Yp, class _Del> std::shared_ptr<_Tp>::_Assignable<std::unique_ptr<_Up, _Ep> > std::shared_ptr<_Tp>::[01;32m[Koperator=[m[K(std::unique_ptr<_Up, _Ep>&&) [35m[K[with _Del = _Yp; _Tp = rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >][m[K[m[K’
+[5.223s]   454 |         [01;36m[Koperator[m[K=(unique_ptr<_Yp, _Del>&& __r)
+[5.223s]       |         [01;36m[K^~~~~~~~[m[K
+[5.223s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:454:9:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[5.223s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:18:35:[m[K [01;36m[Knote: [m[K  couldn’t deduce template parameter ‘[01m[K_Yp[m[K’
+[5.224s]    18 |             vel_publisher = this->[01;36m[Kcreate_publisher<std_msgs::msg::String("vel",10)[m[K;
+[5.224s]       |                                   [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[5.224s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:414:19:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::shared_ptr<_Tp>& std::shared_ptr<_Tp>::[01;32m[Koperator=[m[K(const std::shared_ptr<_Tp>&) [35m[K[with _Tp = rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >][m[K[m[K’
+[5.224s]   414 |       shared_ptr& [01;36m[Koperator[m[K=(const shared_ptr&) noexcept = default;
+[5.225s]       |                   [01;36m[K^~~~~~~~[m[K
+[5.225s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:414:29:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[K<unresolved overloaded function type>[m[K’ to ‘[01m[Kconst std::shared_ptr<rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > > >&[m[K’
+[5.225s]   414 |       shared_ptr& operator=([01;36m[Kconst shared_ptr&[m[K) noexcept = default;
+[5.225s]       |                             [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[5.226s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:438:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::shared_ptr<_Tp>& std::shared_ptr<_Tp>::[01;32m[Koperator=[m[K(std::shared_ptr<_Tp>&&) [35m[K[with _Tp = rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >][m[K[m[K’
+[5.226s]   438 |       [01;36m[Koperator[m[K=(shared_ptr&& __r) noexcept
+[5.226s]       |       [01;36m[K^~~~~~~~[m[K
+[5.226s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:438:30:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[K<unresolved overloaded function type>[m[K’ to ‘[01m[Kstd::shared_ptr<rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > > >&&[m[K’
+[5.227s]   438 |       operator=([01;36m[Kshared_ptr&& __r[m[K) noexcept
+[5.227s]       |                 [01;36m[K~~~~~~~~~~~~~^~~[m[K
+[5.227s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:19:84:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kstd_msgs::msg::String_<std::allocator<void> >::String_(const char [5], int)[m[K’
+[5.227s]    19 | an_publisher = this->create_publisher<std_msgs::msg::String("scan",10[01;31m[K)[m[K;
+[5.228s]       |                                                                      [01;31m[K^[m[K
+[5.228s] 
+[5.228s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:48:12:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd_msgs::msg::String_<ContainerAllocator>::[01;32m[KString_[m[K(const ContainerAllocator&, rosidl_runtime_cpp::MessageInitialization) [35m[K[with ContainerAllocator = std::allocator<void>][m[K[m[K’
+[5.229s]    48 |   explicit [01;36m[KString_[m[K(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
+[5.229s]       |            [01;36m[K^~~~~~~[m[K
+[5.229s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:48:47:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst char [5][m[K’ to ‘[01m[Kconst std::allocator<void>&[m[K’
+[5.229s]    48 |   explicit String_([01;36m[Kconst ContainerAllocator & _alloc[m[K, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
+[5.230s]       |                    [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[5.230s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:39:12:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd_msgs::msg::String_<ContainerAllocator>::[01;32m[KString_[m[K(rosidl_runtime_cpp::MessageInitialization) [35m[K[with ContainerAllocator = std::allocator<void>][m[K[m[K’
+[5.230s]    39 |   explicit [01;36m[KString_[m[K(rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
+[5.230s]       |            [01;36m[K^~~~~~~[m[K
+[5.231s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:39:12:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 2 provided
+[5.231s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:35:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd_msgs::msg::String_<std::allocator<void> >::[01;32m[KString_[m[K(const std_msgs::msg::String_<std::allocator<void> >&)[m[K’
+[5.231s]    35 | struct [01;36m[KString_[m[K
+[5.231s]       |        [01;36m[K^~~~~~~[m[K
+[5.232s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:35:8:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 2 provided
+[5.232s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:35:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd_msgs::msg::String_<std::allocator<void> >::[01;32m[KString_[m[K(std_msgs::msg::String_<std::allocator<void> >&&)[m[K’
+[5.232s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:35:8:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 2 provided
+[5.232s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:19:36:[m[K [01;31m[Kerror: [m[Kparse error in template argument list
+[5.233s]    19 |             scan_publisher = this->[01;31m[Kcreate_publisher<std_msgs::msg::String("scan",10)[m[K;
+[5.233s]       |                                    [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[5.233s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:19:36:[m[K [01;31m[Kerror: [m[Kno match for ‘[01m[Koperator=[m[K’ (operand types are ‘[01m[Krclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >::SharedPtr[m[K’ {aka ‘[01m[Kstd::shared_ptr<rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > > >[m[K’} and ‘[01m[K<unresolved overloaded function type>[m[K’)
+[5.233s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:418:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Yp> std::shared_ptr<_Tp>::_Assignable<const std::shared_ptr<_Yp>&> std::shared_ptr<_Tp>::[01;32m[Koperator=[m[K(const std::shared_ptr<_Yp>&) [35m[K[with _Tp = rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >][m[K[m[K’
+[5.234s]   418 |         [01;36m[Koperator[m[K=(const shared_ptr<_Yp>& __r) noexcept
+[5.234s]       |         [01;36m[K^~~~~~~~[m[K
+[5.234s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:418:9:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[5.234s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:19:36:[m[K [01;36m[Knote: [m[K  couldn’t deduce template parameter ‘[01m[K_Yp[m[K’
+[5.235s]    19 |             scan_publisher = this->[01;36m[Kcreate_publisher<std_msgs::msg::String("scan",10)[m[K;
+[5.235s]       |                                    [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[5.235s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:429:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Yp> std::shared_ptr<_Tp>::_Assignable<std::auto_ptr<_Up> > std::shared_ptr<_Tp>::[01;32m[Koperator=[m[K(std::auto_ptr<_Up>&&) [35m[K[with _Tp = rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >][m[K[m[K’
+[5.235s]   429 |         [01;36m[Koperator[m[K=(auto_ptr<_Yp>&& __r)
+[5.236s]       |         [01;36m[K^~~~~~~~[m[K
+[5.236s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:429:9:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[5.236s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:19:36:[m[K [01;36m[Knote: [m[K  couldn’t deduce template parameter ‘[01m[K_Yp[m[K’
+[5.236s]    19 |             scan_publisher = this->[01;36m[Kcreate_publisher<std_msgs::msg::String("scan",10)[m[K;
+[5.237s]       |                                    [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[5.237s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:446:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Yp> std::shared_ptr<_Tp>::_Assignable<std::shared_ptr<_Yp> > std::shared_ptr<_Tp>::[01;32m[Koperator=[m[K(std::shared_ptr<_Yp>&&) [35m[K[with _Tp = rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >][m[K[m[K’
+[5.237s]   446 |         [01;36m[Koperator[m[K=(shared_ptr<_Yp>&& __r) noexcept
+[5.237s]       |         [01;36m[K^~~~~~~~[m[K
+[5.238s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:446:9:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[5.238s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:19:36:[m[K [01;36m[Knote: [m[K  couldn’t deduce template parameter ‘[01m[K_Yp[m[K’
+[5.238s]    19 |             scan_publisher = this->[01;36m[Kcreate_publisher<std_msgs::msg::String("scan",10)[m[K;
+[5.238s]       |                                    [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[5.238s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:454:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Yp, class _Del> std::shared_ptr<_Tp>::_Assignable<std::unique_ptr<_Up, _Ep> > std::shared_ptr<_Tp>::[01;32m[Koperator=[m[K(std::unique_ptr<_Up, _Ep>&&) [35m[K[with _Del = _Yp; _Tp = rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >][m[K[m[K’
+[5.239s]   454 |         [01;36m[Koperator[m[K=(unique_ptr<_Yp, _Del>&& __r)
+[5.239s]       |         [01;36m[K^~~~~~~~[m[K
+[5.239s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:454:9:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[5.239s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:19:36:[m[K [01;36m[Knote: [m[K  couldn’t deduce template parameter ‘[01m[K_Yp[m[K’
+[5.240s]    19 |             scan_publisher = this->[01;36m[Kcreate_publisher<std_msgs::msg::String("scan",10)[m[K;
+[5.240s]       |                                    [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[5.240s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:414:19:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::shared_ptr<_Tp>& std::shared_ptr<_Tp>::[01;32m[Koperator=[m[K(const std::shared_ptr<_Tp>&) [35m[K[with _Tp = rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >][m[K[m[K’
+[5.240s]   414 |       shared_ptr& [01;36m[Koperator[m[K=(const shared_ptr&) noexcept = default;
+[5.241s]       |                   [01;36m[K^~~~~~~~[m[K
+[5.241s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:414:29:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[K<unresolved overloaded function type>[m[K’ to ‘[01m[Kconst std::shared_ptr<rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > > >&[m[K’
+[5.241s]   414 |       shared_ptr& operator=([01;36m[Kconst shared_ptr&[m[K) noexcept = default;
+[5.241s]       |                             [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[5.242s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:438:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::shared_ptr<_Tp>& std::shared_ptr<_Tp>::[01;32m[Koperator=[m[K(std::shared_ptr<_Tp>&&) [35m[K[with _Tp = rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >][m[K[m[K’
+[5.242s]   438 |       [01;36m[Koperator[m[K=(shared_ptr&& __r) noexcept
+[5.242s]       |       [01;36m[K^~~~~~~~[m[K
+[5.242s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:438:30:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[K<unresolved overloaded function type>[m[K’ to ‘[01m[Kstd::shared_ptr<rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > > >&&[m[K’
+[5.243s]   438 |       operator=([01;36m[Kshared_ptr&& __r[m[K) noexcept
+[5.243s]       |                 [01;36m[K~~~~~~~~~~~~~^~~[m[K
+[5.243s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:20:86:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kstd_msgs::msg::String_<std::allocator<void> >::String_(const char [6], int)[m[K’
+[5.243s]    20 | r_publisher = this->create_publisher<std_msgs::msg::String("other",10[01;31m[K)[m[K;
+[5.244s]       |                                                                      [01;31m[K^[m[K
+[5.244s] 
+[5.244s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:48:12:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd_msgs::msg::String_<ContainerAllocator>::[01;32m[KString_[m[K(const ContainerAllocator&, rosidl_runtime_cpp::MessageInitialization) [35m[K[with ContainerAllocator = std::allocator<void>][m[K[m[K’
+[5.245s]    48 |   explicit [01;36m[KString_[m[K(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
+[5.245s]       |            [01;36m[K^~~~~~~[m[K
+[5.245s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:48:47:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst char [6][m[K’ to ‘[01m[Kconst std::allocator<void>&[m[K’
+[5.245s]    48 |   explicit String_([01;36m[Kconst ContainerAllocator & _alloc[m[K, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
+[5.245s]       |                    [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[5.246s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:39:12:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd_msgs::msg::String_<ContainerAllocator>::[01;32m[KString_[m[K(rosidl_runtime_cpp::MessageInitialization) [35m[K[with ContainerAllocator = std::allocator<void>][m[K[m[K’
+[5.246s]    39 |   explicit [01;36m[KString_[m[K(rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
+[5.246s]       |            [01;36m[K^~~~~~~[m[K
+[5.246s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:39:12:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 2 provided
+[5.247s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:35:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd_msgs::msg::String_<std::allocator<void> >::[01;32m[KString_[m[K(const std_msgs::msg::String_<std::allocator<void> >&)[m[K’
+[5.247s]    35 | struct [01;36m[KString_[m[K
+[5.247s]       |        [01;36m[K^~~~~~~[m[K
+[5.247s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:35:8:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 2 provided
+[5.248s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:35:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd_msgs::msg::String_<std::allocator<void> >::[01;32m[KString_[m[K(std_msgs::msg::String_<std::allocator<void> >&&)[m[K’
+[5.248s] [01m[K/opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp:35:8:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 2 provided
+[5.248s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:20:37:[m[K [01;31m[Kerror: [m[Kparse error in template argument list
+[5.249s]    20 |             other_publisher = this->[01;31m[Kcreate_publisher<std_msgs::msg::String("other",10)[m[K;
+[5.249s]       |                                     [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[5.249s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:20:37:[m[K [01;31m[Kerror: [m[Kno match for ‘[01m[Koperator=[m[K’ (operand types are ‘[01m[Krclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >::SharedPtr[m[K’ {aka ‘[01m[Kstd::shared_ptr<rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > > >[m[K’} and ‘[01m[K<unresolved overloaded function type>[m[K’)
+[5.249s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:418:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Yp> std::shared_ptr<_Tp>::_Assignable<const std::shared_ptr<_Yp>&> std::shared_ptr<_Tp>::[01;32m[Koperator=[m[K(const std::shared_ptr<_Yp>&) [35m[K[with _Tp = rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >][m[K[m[K’
+[5.249s]   418 |         [01;36m[Koperator[m[K=(const shared_ptr<_Yp>& __r) noexcept
+[5.250s]       |         [01;36m[K^~~~~~~~[m[K
+[5.250s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:418:9:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[5.250s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:20:37:[m[K [01;36m[Knote: [m[K  couldn’t deduce template parameter ‘[01m[K_Yp[m[K’
+[5.250s]    20 |             other_publisher = this->[01;36m[Kcreate_publisher<std_msgs::msg::String("other",10)[m[K;
+[5.251s]       |                                     [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[5.251s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:429:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Yp> std::shared_ptr<_Tp>::_Assignable<std::auto_ptr<_Up> > std::shared_ptr<_Tp>::[01;32m[Koperator=[m[K(std::auto_ptr<_Up>&&) [35m[K[with _Tp = rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >][m[K[m[K’
+[5.251s]   429 |         [01;36m[Koperator[m[K=(auto_ptr<_Yp>&& __r)
+[5.251s]       |         [01;36m[K^~~~~~~~[m[K
+[5.252s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:429:9:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[5.252s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:20:37:[m[K [01;36m[Knote: [m[K  couldn’t deduce template parameter ‘[01m[K_Yp[m[K’
+[5.252s]    20 |             other_publisher = this->[01;36m[Kcreate_publisher<std_msgs::msg::String("other",10)[m[K;
+[5.252s]       |                                     [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[5.252s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:446:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Yp> std::shared_ptr<_Tp>::_Assignable<std::shared_ptr<_Yp> > std::shared_ptr<_Tp>::[01;32m[Koperator=[m[K(std::shared_ptr<_Yp>&&) [35m[K[with _Tp = rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >][m[K[m[K’
+[5.253s]   446 |         [01;36m[Koperator[m[K=(shared_ptr<_Yp>&& __r) noexcept
+[5.253s]       |         [01;36m[K^~~~~~~~[m[K
+[5.253s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:446:9:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[5.253s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:20:37:[m[K [01;36m[Knote: [m[K  couldn’t deduce template parameter ‘[01m[K_Yp[m[K’
+[5.254s]    20 |             other_publisher = this->[01;36m[Kcreate_publisher<std_msgs::msg::String("other",10)[m[K;
+[5.254s]       |                                     [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[5.254s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:454:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Yp, class _Del> std::shared_ptr<_Tp>::_Assignable<std::unique_ptr<_Up, _Ep> > std::shared_ptr<_Tp>::[01;32m[Koperator=[m[K(std::unique_ptr<_Up, _Ep>&&) [35m[K[with _Del = _Yp; _Tp = rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >][m[K[m[K’
+[5.254s]   454 |         [01;36m[Koperator[m[K=(unique_ptr<_Yp, _Del>&& __r)
+[5.254s]       |         [01;36m[K^~~~~~~~[m[K
+[5.255s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:454:9:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[5.255s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:20:37:[m[K [01;36m[Knote: [m[K  couldn’t deduce template parameter ‘[01m[K_Yp[m[K’
+[5.255s]    20 |             other_publisher = this->[01;36m[Kcreate_publisher<std_msgs::msg::String("other",10)[m[K;
+[5.255s]       |                                     [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[5.255s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:414:19:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::shared_ptr<_Tp>& std::shared_ptr<_Tp>::[01;32m[Koperator=[m[K(const std::shared_ptr<_Tp>&) [35m[K[with _Tp = rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >][m[K[m[K’
+[5.256s]   414 |       shared_ptr& [01;36m[Koperator[m[K=(const shared_ptr&) noexcept = default;
+[5.256s]       |                   [01;36m[K^~~~~~~~[m[K
+[5.256s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:414:29:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[K<unresolved overloaded function type>[m[K’ to ‘[01m[Kconst std::shared_ptr<rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > > >&[m[K’
+[5.256s]   414 |       shared_ptr& operator=([01;36m[Kconst shared_ptr&[m[K) noexcept = default;
+[5.256s]       |                             [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[5.257s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:438:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::shared_ptr<_Tp>& std::shared_ptr<_Tp>::[01;32m[Koperator=[m[K(std::shared_ptr<_Tp>&&) [35m[K[with _Tp = rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >][m[K[m[K’
+[5.257s]   438 |       [01;36m[Koperator[m[K=(shared_ptr&& __r) noexcept
+[5.257s]       |       [01;36m[K^~~~~~~~[m[K
+[5.257s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:438:30:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[K<unresolved overloaded function type>[m[K’ to ‘[01m[Kstd::shared_ptr<rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > > >&&[m[K’
+[5.257s]   438 |       operator=([01;36m[Kshared_ptr&& __r[m[K) noexcept
+[5.257s]       |                 [01;36m[K~~~~~~~~~~~~~^~~[m[K
+[5.258s] In file included from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+[5.258s]                  from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/copy_all_parameter_values.hpp:27[m[K,
+[5.258s]                  from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp:171[m[K:
+[5.258s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:[m[K In member function ‘[01m[Kvoid SistemaOperativo::[01;32m[Ktimer_callback[m[K()[m[K’:
+[5.258s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:35:64:[m[K [01;31m[Kerror: [m[K‘[01m[Kposizione_msg[m[K’ was not declared in this scope
+[5.258s]    35 |          RCLCPP_INFO(this->get_logger(), "Published: '%s'", [01;31m[Kposizione_msg[m[K.data.c_str());
+[5.258s]       |                                                             [01;31m[K^~~~~~~~~~~~~[m[K
+[5.258s] 
+[7.330s] gmake[2]: *** [CMakeFiles/sistemaoperativo.dir/build.make:76: CMakeFiles/sistemaoperativo.dir/src/sistemaoperativo.cpp.o] Error 1
+[7.330s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/sistemaoperativo.dir/all] Error 2
+[7.330s] gmake: *** [Makefile:146: all] Error 2
+[7.336s] Invoked command in '/home/fedelopre/Downloads/real-proj/cpp_proj/build/move_package' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/fedelopre/Downloads/real-proj/cpp_proj/build/move_package -- -j3 -l3

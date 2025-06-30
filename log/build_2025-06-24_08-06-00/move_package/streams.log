@@ -1,0 +1,38 @@
+[0.029s] Invoking command in '/home/fedelopre/Downloads/real-proj/cpp_proj/build/move_package': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/fedelopre/Downloads/real-proj/cpp_proj/build/move_package -- -j3 -l3
+[0.101s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.648s] -- Found rclcpp: 28.1.9 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.740s] -- Found rosidl_generator_c: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.777s] -- Found rosidl_generator_cpp: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.822s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.872s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.113s] -- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[1.117s] -- Found rmw_fastrtps_cpp: 8.4.2 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[1.327s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.583s] -- Found std_msgs: 5.3.6 (/opt/ros/jazzy/share/std_msgs/cmake)
+[1.636s] -- Found ament_lint_auto: 0.17.2 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[1.882s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.883s] -- Configured cppcheck include dirs: 
+[1.883s] -- Configured cppcheck exclude dirs and/or files: 
+[1.884s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.885s] -- Configured 'flake8' exclude dirs and/or files: 
+[1.886s] -- Added test 'lint_cmake' to check CMake code style
+[1.889s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.890s] -- Added test 'uncrustify' to check C / C++ code style
+[1.890s] -- Configured uncrustify additional arguments: 
+[1.892s] -- Added test 'xmllint' to check XML markup files
+[1.893s] -- Configuring done (1.8s)
+[1.926s] -- Generating done (0.0s)
+[1.941s] -- Build files have been written to: /home/fedelopre/Downloads/real-proj/cpp_proj/build/move_package
+[2.075s] [ 50%] [32mBuilding CXX object CMakeFiles/sistemaoperativo.dir/src/sistemaoperativo.cpp.o[0m
+[6.877s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:[m[K In constructor ‘[01m[KMinimalPublisher::[01;32m[KMinimalPublisher[m[K()[m[K’:
+[6.879s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:12:56:[m[K [01;31m[Kerror: [m[Kclass ‘[01m[KMinimalPublisher[m[K’ does not have any field named ‘[01m[Kcount_[m[K’
+[6.879s]    12 |         MinimalPublisher() : Node("sistemaoperativo"), [01;31m[Kcount_[m[K(0) {
+[6.879s]       |                                                        [01;31m[K^~~~~~[m[K
+[6.907s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:[m[K In member function ‘[01m[Kvoid MinimalPublisher::[01;32m[Ktimer_callback[m[K()[m[K’:
+[6.907s] [01m[K/home/fedelopre/Downloads/real-proj/cpp_proj/src/move_package/src/sistemaoperativo.cpp:20:69:[m[K [01;31m[Kerror: [m[K‘[01m[Kcount_[m[K’ was not declared in this scope
+[6.907s]    20 |         message.data = "Position [0.0, 0.0, 0.0] " + std::to_string([01;31m[Kcount_[m[K++);
+[6.907s]       |                                                                     [01;31m[K^~~~~~[m[K
+[8.882s] gmake[2]: *** [CMakeFiles/sistemaoperativo.dir/build.make:76: CMakeFiles/sistemaoperativo.dir/src/sistemaoperativo.cpp.o] Error 1
+[8.884s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/sistemaoperativo.dir/all] Error 2
+[8.886s] gmake: *** [Makefile:146: all] Error 2
+[8.890s] Invoked command in '/home/fedelopre/Downloads/real-proj/cpp_proj/build/move_package' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/fedelopre/Downloads/real-proj/cpp_proj/build/move_package -- -j3 -l3
