@@ -1,88 +1,105 @@
 #include "rclcpp/rclcpp.hpp"
-#include "std_msgs/msg/string.hpp"
+#include "nav_msgs/msg/odometry.hpp"
+#include "geometry_msgs/msg/twist.hpp"
+#include "sensor_msgs/msg/laser_scan.hpp"
 #include <chrono>
 #include <memory>
 
 using namespace std::chrono_literals;
 
+#define OBSTACLE_PRIORITY 0
+#define MAPPING_PRIORITY 1
+#define BACKHOME_PRIORITY 2
+#define NAVIGATION_PRIORITY 3
+
 class SistemaOperativo : public rclcpp::Node
 {
     rclcpp::TimerBase::SharedPtr timer_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr posizione_publisher;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr vel_publisher;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr scan_publisher;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr other_publisher;
+    rclcpp::Publisher<sensor_msgs::msg::LaserScan>::SharedPtr scan_publisher;
+    rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr posizione_publisher;
+    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr vel_publisher;
 
-    rclcpp::Subscription<std_msgs::msg::String>::SharedPtr posizione_subscriber;
-    rclcpp::Subscription<std_msgs::msg::String>::SharedPtr vel_subscriber;
-    rclcpp::Subscription<std_msgs::msg::String>::SharedPtr scan_subscriber;
+    rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr scan_subscriber;
+    rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr posizione_subscriber;
+    rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr vel_subscriber;
+    rclcpp::Subscription<std_msgs::msg::String>::SharedPtr status_subscriber;
 
-    std::string posizione_risposta = "";
-    std::string vel_risposta = "";
-    std::string scan_risposta = "";
+    
+    geometry_msgs::msg::Twist mapping_vel;
+    geometry_msgs::msg::Twist obstacle_vel;
+    geometry_msgs::msg::Twist backhome_vel;
+    std::string status;
 
-    public:
-        SistemaOperativo() : Node("sistemaoperativo"){
-            posizione_publisher = this->create_publisher<std_msgs::msg::String>("position", 10);
-            vel_publisher = this->create_publisher<std_msgs::msg::String>("vel",10);
-            scan_publisher = this->create_publisher<std_msgs::msg::String>("scan",10);
 
-            posizione_subscriber = this->create_subscription<std_msgs::msg::String>(
-            "position_modified", 10,
-            [this](std_msgs::msg::String::SharedPtr msg) {
-                posizione_risposta = msg->data;
-                RCLCPP_INFO(this->get_logger(), "Ricevuto da position_modified: '%s'", msg->data.c_str());
-            });
-
-        vel_subscriber = this->create_subscription<std_msgs::msg::String>(
-            "vel_modified", 10,
-            [this](std_msgs::msg::String::SharedPtr msg) {
-                vel_risposta = msg->data;
-                RCLCPP_INFO(this->get_logger(), "Ricevuto da vel_modified: '%s'", msg->data.c_str());
-            });
-
-        scan_subscriber = this->create_subscription<std_msgs::msg::String>(
-            "scan_modified", 10,
-            [this](std_msgs::msg::String::SharedPtr msg) {
-                scan_risposta = msg->data;
-                RCLCPP_INFO(this->get_logger(), "Ricevuto da scan_modified: '%s'", msg->data.c_str());
-            });
-
+public:
+    SistemaOperativo() : Node("sistemaoperativo"), status('0')
+    {
         
-            timer_ = this->create_wall_timer(
-                500ms, std::bind(&SistemaOperativo::timer_callback, this));
+        vel_publisher = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
+
+        vel_subscriber = this->create_subscription<geometry_msgs::msg::Twist>(
+            "backhome_vel", 10,
+            [this](geometry_msgs::msg::Twist::SharedPtr msg) {
+                backhome_vel = *msg;
+                RCLCPP_INFO(this->get_logger(), "Ricevuto Twist linear.x: %.2f", msg->linear.x);
+            });
+
+        status_subscriber = this->create_subscription<std_msgs::msg::String>(
+            "status", 10,
+            [this](std_msgs::msg::String::SharedPtr msg) {
+                status = msg->data;
+                RCLCPP_INFO(this->get_logger(), "Status aggiornato: '%s'", status.c_str());
+            });
+
+        vel_subscriber = this->create_subscription<geometry_msgs::msg::Twist>(
+            "mapping_vel", 10,
+            [this](geometry_msgs::msg::Twist::SharedPtr msg) {
+                mapping_vel = *msg;
+                RCLCPP_INFO(this->get_logger(), "Ricevuto Twist linear.x: %.2f", msg->linear.x);
+            });
+
+        vel_subscriber = this->create_subscription<geometry_msgs::msg::Twist>(
+            "obstacle_vel", 10,
+            [this](geometry_msgs::msg::Twist::SharedPtr msg) {
+                obstacle_vel = *msg;
+                RCLCPP_INFO(this->get_logger(), "Ricevuto Twist linear.x: %.2f", msg->linear.x);
+            });
+
+        timer_ = this->create_wall_timer(
+            500ms, std::bind(&SistemaOperativo::timer_callback, this));
+    }
+
+private:
+    void timer_callback()
+    {
+        // Decisione in base a priorità (da implementare con logica più avanzata eventualmente)
+        if(obstacle_vel->linear.x == 0){ 
+            priority = OBSTACLE_PRIORITY;
+        } else {
+            priority = int(status);
         }
-    private:
-        void timer_callback() {
+        switch (priority)
+        {
+        case OBSTACLE_PRIORITY:
             
-            /*Ora guardo tutte le cose che mi sono arrivate e decido quale pubblicare sul topic del robot reale in base alla priorità */
+            break;
+        case MAPPING_PRIORITY:
 
-            auto scan_msg = std_msgs::msg::String();
-            scan_msg.data = scan_risposta; 
-            scan_publisher->publish(scan_msg);
-            RCLCPP_INFO(this->get_logger(), "Published: '%s'", scan_msg.data.c_str());
-            
+            break;
+        case BACKHOME_PRIORITY:
 
-            auto message = std_msgs::msg::String();
-            message.data = posizione_risposta;
-            RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
-            posizione_publisher->publish(message);
-            
-            auto vel_msg = std_msgs::msg::String();
-            vel_msg.data = vel_risposta;
-            vel_publisher->publish(vel_msg);
-            RCLCPP_INFO(this->get_logger(), "Published: '%s'", vel_msg.data.c_str());
+            break;
+        case NAVIGATION_PRIORITY:
+            break;
+        }
+        vel_publisher->publish(latest_twist);
 
-            
-            
-            
-
+        RCLCPP_INFO(this->get_logger(), "Pubblicato messaggio su /cmd_vel");
     }
 };
 
-
-
-int main(int argc, char * argv[]) {
+int main(int argc, char *argv[])
+{
     rclcpp::init(argc, argv);
     rclcpp::spin(std::make_shared<SistemaOperativo>());
     rclcpp::shutdown();
