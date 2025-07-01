@@ -43,9 +43,18 @@ private:
 
     void odomCallback(const nav_msgs::msg::Odometry::SharedPtr msg) {
         if(come_back_home){
-          if(msg->header.pose.pose.position.x > 0){
-              
-          }
+            const auto& q_msg = msg->pose.pose.orientation;
+            tf2::Quaternion q(q_msg.x, q_msg.y, q_msg.z, q_msg.w);
+            tf2::Vector3 forward_local(1.0, 0.0, 0.0);
+            tf2::Vector3 forward_global = tf2::quatRotate(q, forward_local);
+            const auto& p_msg = msg->pose.pose.position;
+            tf2::Vector3 home(-p_msg.x, -p_msg.y, 0.0);
+            home = home.normalized();
+            double dot = forward_global.dot(home);
+            double angle = std::acos(std::clamp(dot, -1.0, 1.0));
+            if(std::abs(angle) < 0.1){
+                oriented = true;
+            }
         }
     }
 
@@ -56,14 +65,13 @@ private:
             cmd.linear.x = 0.0;
             cmd.angular.z = 0.5;  // Gira a sinistra
         } else if(!oriented && come_back_home){
-
-          
+            cmd.linear.x = 0.0;
+            cmd.angular.z = 0.5;
         } 
         else {
             cmd.linear.x = 0.3;
             cmd.angular.z = 0.0;
         }
-
         cmd_pub_->publish(cmd);
     }
 };
