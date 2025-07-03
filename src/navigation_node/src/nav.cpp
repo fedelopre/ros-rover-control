@@ -2,6 +2,8 @@
 #include "sensor_msgs/msg/laser_scan.hpp"
 #include "nav_msgs/msg/odometry.hpp"
 #include "geometry_msgs/msg/twist.hpp"
+#include <mutex>
+
 
 using std::placeholders::_1;
 
@@ -25,6 +27,7 @@ private:
     rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr odom_sub_;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_pub_;
     rclcpp::TimerBase::SharedPtr timer_;
+    std::mutex m;
 
     bool obstacle_detected_ = false;
     bool come_back_home = false;
@@ -34,6 +37,7 @@ private:
         size_t mid_index = msg->ranges.size() / 2; //davanti
         float front = msg->ranges[mid_index]; 
 
+        std::lock_guard<std::mutex> lock(m);
         if (front < 0.8) {
             obstacle_detected_ = true;
         } else {
@@ -52,15 +56,20 @@ private:
             home = home.normalized();
             double dot = forward_global.dot(home);
             double angle = std::acos(std::clamp(dot, -1.0, 1.0));
+
+            std::lock_guard<std::mutex> lock(m);
             if(std::abs(angle) < 0.1){
                 oriented = true;
+            } esle {
+                oriented = false;
             }
+
         }
     }
 
     void controlLoop() {
         auto cmd = geometry_msgs::msg::Twist();
-
+        std::lock_guard<std::mutex> lock(m);
         if (obstacle_detected_) {
             cmd.linear.x = 0.0;
             cmd.angular.z = 0.5;  // Gira a sinistra
