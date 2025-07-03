@@ -1,17 +1,16 @@
 #include "rclcpp/rclcpp.hpp"
-#include "sensor_msgs/msg/laser_scan.hpp"
-#include "nav_msgs/msg/odometry.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include <random>
 
 class MappingNode : public rclcpp::Node {
   public:
-  MappingNode() : Node("mapping_node"), gen_(rd_()), dist_(0,1), count(0) {
+  MappingNode() : Node("mapping_node"), gen_(rd_()), dist_(0,1), count(0) 
+  {
     cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("/vel_mapping", 10);
     timer_ = this->create_wall_timer(
       std::chrono::milliseconds(100), std::bind(&MappingNode::controlLoop, this));
-    }
-    private:
+  }
+  private:
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_pub_;
     rclcpp::TimerBase::SharedPtr timer_;
     int count;
@@ -21,7 +20,7 @@ class MappingNode : public rclcpp::Node {
 
     void controlLoop() {
       auto cmd = geometry_msgs::msg::Twist(); 
-      int random_bit = dist(gen); 
+      int random_bit = dist_(gen_); 
       if (count == 10) {
         cmd.linear.x = 0.0;
         cmd.angular.z = 0.5;  // Gira a sinistra
@@ -37,7 +36,7 @@ class MappingNode : public rclcpp::Node {
       count++;
       cmd_pub_->publish(cmd);
     }
-  }
+}
 
   int main(int argc, char * argv[]) {
     rclcpp::init(argc, argv);

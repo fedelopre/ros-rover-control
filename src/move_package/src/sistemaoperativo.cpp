@@ -1,7 +1,5 @@
 #include "rclcpp/rclcpp.hpp"
-#include "nav_msgs/msg/odometry.hpp"
 #include "geometry_msgs/msg/twist.hpp"
-#include "sensor_msgs/msg/laser_scan.hpp"
 #include <chrono>
 #include <memory>
 

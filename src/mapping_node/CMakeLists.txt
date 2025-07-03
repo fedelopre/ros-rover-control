@@ -9,7 +9,13 @@ endif()
 find_package(ament_cmake REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
-# find_package(<dependency> REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+
+add_executable(mapping_node src/map.cpp)
+ament_target_dependencies(mapping_node rclcpp std_msgs geometry_msgs)
+install(TARGETS mapping_node DESTINATION lib/${PROJECT_NAME})
 
 add_executable(map src/map.cpp)
 target_include_directories(map PUBLIC

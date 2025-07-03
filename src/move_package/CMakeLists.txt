@@ -13,6 +13,7 @@ find_package(ament_cmake REQUIRED)
 # find_package(<dependency> REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
 
 install(DIRECTORY
   launch
@@ -25,6 +26,7 @@ install(TARGETS sistemaoperativo
 ament_target_dependencies(sistemaoperativo
   rclcpp
   std_msgs
+  geometry_msgs
 )
 
 if(BUILD_TESTING)
