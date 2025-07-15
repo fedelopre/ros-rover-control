@@ -36,7 +36,7 @@ class MappingNode : public rclcpp::Node {
       count++;
       cmd_pub_->publish(cmd);
     }
-}
+};
 
   int main(int argc, char * argv[]) {
     rclcpp::init(argc, argv);

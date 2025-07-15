@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 project(move_package)
 
+
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
@@ -15,6 +16,7 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 
+
 install(DIRECTORY
   launch
   DESTINATION share/${PROJECT_NAME}/
@@ -28,7 +30,7 @@ ament_target_dependencies(sistemaoperativo
   std_msgs
   geometry_msgs
 )
-
+target_compile_features(sistemaoperativo PUBLIC cxx_std_20)
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights

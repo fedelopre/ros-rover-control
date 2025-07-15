@@ -1,7 +1,9 @@
 #include "rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/twist.hpp"
+#include "std_msgs/msg/string.hpp" 
 #include <chrono>
 #include <memory>
+#include <semaphore>
 
 using namespace std::chrono_literals;
 
@@ -22,20 +24,13 @@ class SistemaOperativo : public rclcpp::Node
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr status_subscriber;
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr nav_subscriber;
 
-    geometry_msgs::msg::Twist mapping_vel;
-    geometry_msgs::msg::Twist obstacle_vel;
-    geometry_msgs::msg::Twist backhome_vel;
-    bool scan_arrived, backhome_arrived, obstacle_arrived, navigation_arrived; // aggiungere nav
-    std::string status;
-    std::mutex data_mut;
-    std::counting_semaphore<1> sem(1);
-    int cControlLoop;
-
 
 public:
-    SistemaOperativo() : Node("sistemaoperativo"), status('0'), cControlLoop(0)
+    SistemaOperativo() : Node("sistemaoperativo"), sem(1)
     {
         obstacle_arrived = nav_arrived = scan_arrived = backhome_arrived = false;
+        status = '0';
+        cControlLoop = 0;
         
         vel_publisher = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
 
@@ -51,10 +46,10 @@ public:
         backhome_subscriber = this->create_subscription<geometry_msgs::msg::Twist>(
             "backhome_vel", 10,
             [this](geometry_msgs::msg::Twist::SharedPtr msg) {
-                std::lock_guard<std::mutex> lock(m);
+                std::lock_guard<std::mutex> lock(data_mut);
                 backhome_vel = *msg;
                 backhome_arrived = true;
-                if ((obstacle_arrived && nav_arrived && scan_arrived && backhome_arrived) && ){
+                if ((obstacle_arrived && nav_arrived && scan_arrived && backhome_arrived) && cControlLoop){
                     sem.release();
                     cControlLoop--;
                 }
@@ -71,7 +66,7 @@ public:
         status_subscriber = this->create_subscription<std_msgs::msg::String>(
             "status", 10,
             [this](std_msgs::msg::String::SharedPtr msg) {
-                std::lock_guard<std::mutex> lock(m);
+                std::lock_guard<std::mutex> lock(data_mut);
                 status = msg->data;
                 RCLCPP_INFO(this->get_logger(), "Status aggiornato: '%s'", status.c_str());
             });
@@ -82,10 +77,10 @@ public:
         scan_subscriber = this->create_subscription<geometry_msgs::msg::Twist>(
             "mapping_vel", 10,
             [this](geometry_msgs::msg::Twist::SharedPtr msg) {
-                std::lock_guard<std::mutex> lock(m);
+                std::lock_guard<std::mutex> lock(data_mut);
                 mapping_vel = *msg;
                 scan_arrived = true;
-                if ((obstacle_arrived && nav_arrived && scan_arrived && backhome_arrived) && ){
+                if ((obstacle_arrived && nav_arrived && scan_arrived && backhome_arrived) && cControlLoop){
                     sem.release();
                     cControlLoop--;
                 }
@@ -98,10 +93,10 @@ public:
         nav_subscriber = this->create_subscription<geometry_msgs::msg::Twist>(
             "nav_vel", 10,
             [this](geometry_msgs::msg::Twist::SharedPtr msg) {
-                std::lock_guard<std::mutex> lock(m);
+                std::lock_guard<std::mutex> lock(data_mut);
                 nav_vel = *msg;
                 nav_arrived = true;
-                if ((obstacle_arrived && nav_arrived && scan_arrived && backhome_arrived) && ){
+                if ((obstacle_arrived && nav_arrived && scan_arrived && backhome_arrived) && cControlLoop){
                     sem.release();
                     cControlLoop--;
                 }
@@ -115,11 +110,11 @@ public:
         vel_subscriber = this->create_subscription<geometry_msgs::msg::Twist>(
             "obstacle_vel", 10,
             [this](geometry_msgs::msg::Twist::SharedPtr msg) {
-                std::lock_guard<std::mutex> lock(m);
+                std::lock_guard<std::mutex> lock(data_mut);
                 obstacle_vel = *msg;
                 obstacle_arrived = true;
                 //Se sono l'ultimo allora sveglio il controlLoop
-                if ((obstacle_arrived && nav_arrived && scan_arrived && backhome_arrived) && ){
+                if ((obstacle_arrived && nav_arrived && scan_arrived && backhome_arrived) && cControlLoop){
                     sem.release();
                     cControlLoop--;
                 }
@@ -131,10 +126,20 @@ public:
     }
 
 private:
+    geometry_msgs::msg::Twist mapping_vel;
+    geometry_msgs::msg::Twist obstacle_vel;
+    geometry_msgs::msg::Twist backhome_vel;
+    geometry_msgs::msg::Twist nav_vel;
+    bool scan_arrived, backhome_arrived, obstacle_arrived, nav_arrived; // aggiungere nav
+    std::string status;
+    std::mutex data_mut;
+    std::counting_semaphore<1> sem;
+    int cControlLoop;
     void timer_callback()
-    {
-        std::unique_lock<std::mutex> lock(m);
 
+    {
+        std::unique_lock<std::mutex> lock(data_mut);
+        int priority;
         if (!(obstacle_arrived && nav_arrived && scan_arrived && backhome_arrived)){
             cControlLoop++;
             lock.unlock();
@@ -142,7 +147,7 @@ private:
             lock.lock(); 
         }
         
-        if(obstacle_vel->linear.x == 0){ 
+        if(obstacle_vel.linear.x == 0){ 
             priority = OBSTACLE_PRIORITY;
         } else {
             priority = std::stoi(status);
