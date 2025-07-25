@@ -3,7 +3,7 @@
 #include "nav_msgs/msg/odometry.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include <mutex>
-
+#include <ctime>
 
 using std::placeholders::_1;
 
@@ -17,17 +17,32 @@ public:
             "/odom", 10, std::bind(&NavigationNode::odomCallback, this, _1));
         
         cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("/backhome_vel", 10);
+
+
+        // prendo lo status per vedere quando iniziare
+        status_subscriber = this->create_subscription<std_msgs::msg::String>(
+            "status", 10,
+            [this](std_msgs::msg::String::SharedPtr msg) {
+                std::lock_guard<std::mutex> lock(m);
+                status = msg->data;
+                if (status == 2 && !come_back_home){ // non ancora iniziato
+                    startTime = time(NULL);
+                    come_back_home = 1; 
+                }
+            });
         
         timer_ = this->create_wall_timer(
             std::chrono::milliseconds(100), std::bind(&NavigationNode::controlLoop, this));
     }
 
 private:
+    std::string status;
     rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr scan_sub_;
     rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr odom_sub_;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_pub_;
     rclcpp::TimerBase::SharedPtr timer_;
-    std::mutex m;
+    std::mutex m; // Mutex per le variabili e per il controlLoop
+    time_t startTime;
 
     bool come_back_home = false;
     bool oriented = false;
@@ -51,7 +66,12 @@ private:
             } esle {
                 oriented = false;
             }
-
+            if (time(NULL) - startTime > 60){ // dopo un minuto finisce 
+                come_back_home = 0;
+            }
+            if (q_msg.x == 0 && q_msg.y == 0){
+                come_back_home = 0;
+            }
         }
     }
 
