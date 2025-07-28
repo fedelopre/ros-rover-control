@@ -17,6 +17,7 @@ public:
             "/odom", 10, std::bind(&NavigationNode::odomCallback, this, _1));
         
         cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("/backhome_vel", 10);
+        status_publisher = this->create_publisher<std_msgs::msg::String>("status", 10);
 
 
         // prendo lo status per vedere quando iniziare
@@ -25,7 +26,7 @@ public:
             [this](std_msgs::msg::String::SharedPtr msg) {
                 std::lock_guard<std::mutex> lock(m);
                 status = msg->data;
-                if (status == 2 && !come_back_home){ // non ancora iniziato
+                if (int(status) == 2 && !come_back_home){ // non ancora iniziato
                     startTime = time(NULL);
                     come_back_home = 1; 
                 }
@@ -68,6 +69,7 @@ private:
             }
             if (time(NULL) - startTime > 60){ // dopo un minuto finisce 
                 come_back_home = 0;
+                status_publisher->publish("3"); // Inizio a navigare
             }
             if (q_msg.x == 0 && q_msg.y == 0){
                 come_back_home = 0;
