@@ -6,7 +6,9 @@ class MappingNode : public rclcpp::Node {
   public:
   MappingNode() : Node("mapping_node"), gen_(rd_()), dist_(0,1), count(0) 
   {
+    /*          PUBLISHER           */
     cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("/vel_mapping", 10);
+
     timer_ = this->create_wall_timer(
       std::chrono::milliseconds(100), std::bind(&MappingNode::controlLoop, this));
   }
@@ -26,7 +28,7 @@ class MappingNode : public rclcpp::Node {
         cmd.angular.z = 0.5;  // Gira a sinistra
         count = 0;
       } 
-      else {
+      else if(count == 5){
           cmd.linear.x = 0.3;
           cmd.angular.z = 0.0;
       }
