@@ -10,16 +10,18 @@ using std::placeholders::_1;
 class NavigationNode : public rclcpp::Node {
 public:
     ReturnNode() : Node("come_back_home") {
+
+        /*          PUBLISHER           */
+        status_publisher = this->create_publisher<std_msgs::msg::String>("status", 10);
+        cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("/backhome_vel", 10);
+
+        /*          SUBSCRIBER          */
         scan_sub_ = this->create_subscription<sensor_msgs::msg::LaserScan>(
             "/scan", 10, std::bind(&NavigationNode::scanCallback, this, _1));
         
         odom_sub_ = this->create_subscription<nav_msgs::msg::Odometry>(
             "/odom", 10, std::bind(&NavigationNode::odomCallback, this, _1));
         
-        cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("/backhome_vel", 10);
-        status_publisher = this->create_publisher<std_msgs::msg::String>("status", 10);
-
-
         // prendo lo status per vedere quando iniziare
         status_subscriber = this->create_subscription<std_msgs::msg::String>(
             "status", 10,
@@ -67,12 +69,10 @@ private:
             } esle {
                 oriented = false;
             }
-            if (time(NULL) - startTime > 60){ // dopo un minuto finisce 
+            reached_home = (std::abs(p_msg.x) < 0.1 && std::abs(p_msg.y) < 0.1);
+            if ((time(NULL) - startTime > 60) || reached_home){ // dopo un minuto finisce 
                 come_back_home = 0;
                 status_publisher->publish("3"); // Inizio a navigare
-            }
-            if (q_msg.x == 0 && q_msg.y == 0){
-                come_back_home = 0;
             }
         }
     }
@@ -84,7 +84,10 @@ private:
             cmd.linear.x = 0.0;
             cmd.angular.z = 0.5;
         } 
-        else {
+        else if(!come_back_home){
+            cmd.linear.x = 0.0;
+            cmd.angular.z = 0.0;
+        } else{
             cmd.linear.x = 0.3;
             cmd.angular.z = 0.0;
         }
