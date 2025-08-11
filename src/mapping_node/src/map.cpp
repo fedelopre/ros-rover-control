@@ -4,7 +4,7 @@
 
 class MappingNode : public rclcpp::Node {
   public:
-  MappingNode() : Node("mapping_node"), gen_(rd_()), dist_(0,1), count(0) 
+  MappingNode() : Node("mapping_node"),count(0), gen_(rd_()), dist_(0,1)
   {
     /*          PUBLISHER           */
     cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("/vel_mapping", 10);
@@ -13,12 +13,12 @@ class MappingNode : public rclcpp::Node {
       std::chrono::milliseconds(100), std::bind(&MappingNode::controlLoop, this));
   }
   private:
-    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_pub_;
-    rclcpp::TimerBase::SharedPtr timer_;
     int count;
     std::random_device rd_;
     std::mt19937 gen_;
     std::uniform_int_distribution<> dist_;
+    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_pub_;
+    rclcpp::TimerBase::SharedPtr timer_;
 
     void controlLoop() {
       auto cmd = geometry_msgs::msg::Twist(); 
