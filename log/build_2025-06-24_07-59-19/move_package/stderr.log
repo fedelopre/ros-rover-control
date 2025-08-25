@@ -1,5 +1,0 @@
-[31mCMake Error at CMakeLists.txt:13 (install):
-  install TARGETS given target "sistemaoperativo" which does not exist.
-
-[0m
-gmake: *** [Makefile:226: cmake_check_build_system] Error 1
