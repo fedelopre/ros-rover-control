@@ -1,20 +1,17 @@
 #include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/laser_scan.hpp"
-#include "nav_msgs/msg/odometry.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include <mutex>
 
 
 using std::placeholders::_1;
+
 /*THIS IS THE OBSTACLE ONE*/
 class NavigationNode : public rclcpp::Node {
 public:
     NavigationNode() : Node("navigation_node") {
         scan_sub_ = this->create_subscription<sensor_msgs::msg::LaserScan>(
             "/scan", 10, std::bind(&NavigationNode::scanCallback, this, _1));
-        
-        odom_sub_ = this->create_subscription<nav_msgs::msg::Odometry>(
-            "/odom", 10, std::bind(&NavigationNode::odomCallback, this, _1));
         
         cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("/vel_modified", 10);
         
@@ -24,7 +21,6 @@ public:
 
 private:
     rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr scan_sub_;
-    rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr odom_sub_;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_pub_;
     rclcpp::TimerBase::SharedPtr timer_;
     std::mutex m;

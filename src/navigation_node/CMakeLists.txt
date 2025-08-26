@@ -13,13 +13,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
-find_package(nav_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
-
-add_executable(navigation_node src/nav.cpp)
-ament_target_dependencies(navigation_node rclcpp sensor_msgs geometry_msgs nav_msgs)
-install(TARGETS navigation_node DESTINATION lib/${PROJECT_NAME})
-
 
 add_executable(nav src/nav.cpp)
 target_include_directories(nav PUBLIC
@@ -29,6 +23,13 @@ target_compile_features(nav PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 
 install(TARGETS nav
   DESTINATION lib/${PROJECT_NAME})
+
+ament_target_dependencies(nav
+  rclcpp
+  std_msgs
+  sensor_msgs
+  geometry_msgs
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
