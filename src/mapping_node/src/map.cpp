@@ -4,7 +4,7 @@
 
 class MappingNode : public rclcpp::Node {
   public:
-  MappingNode() : Node("mapping_node"),count(0), gen_(rd_()), dist_(0,1)
+  MappingNode() : Node("mapping_node"), gen_(rd_()), dist_(0,1)
   {
     /*          PUBLISHER           */
     cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("/vel_mapping", 10);
@@ -13,7 +13,7 @@ class MappingNode : public rclcpp::Node {
       std::chrono::milliseconds(100), std::bind(&MappingNode::controlLoop, this));
   }
   private:
-    int count;
+    int count = 0;
     std::random_device rd_;
     std::mt19937 gen_;
     std::uniform_int_distribution<> dist_;
@@ -23,19 +23,20 @@ class MappingNode : public rclcpp::Node {
     void controlLoop() {
       auto cmd = geometry_msgs::msg::Twist(); 
       int random_bit = dist_(gen_); 
-      if (count == 10) {
-        cmd.linear.x = 0.0;
-        cmd.angular.z = 0.5;  // Gira a sinistra
-        count = 0;
-      } 
-      else if(count == 5){
-          cmd.linear.x = 0.3;
-          cmd.angular.z = 0.0;
+      if (count <= 50) {
+        cmd.angular.z = 0.5;  // Gira 
       }
-      if(random_bit){
-        cmd.angular.z *= -1;
+      if (count == 50){
+        if(random_bit){
+          cmd.angular.z *= -1;
+        }
       }
-      count++;
+      cmd.linear.x = 0.3;
+      if(count <= 0){
+        cmd.angular.z = 0;
+        count = 150;
+      }
+      count--;
       cmd_pub_->publish(cmd);
     }
 };

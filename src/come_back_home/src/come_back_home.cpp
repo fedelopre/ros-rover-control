@@ -2,6 +2,10 @@
 #include "sensor_msgs/msg/laser_scan.hpp"
 #include "nav_msgs/msg/odometry.hpp"
 #include "geometry_msgs/msg/twist.hpp"
+#include "std_msgs/msg/string.hpp"
+#include "tf2/LinearMath/Quaternion.h"
+#include "tf2/LinearMath/Vector3.h"
+
 #include <mutex>
 #include <ctime>
 
@@ -9,15 +13,13 @@ using std::placeholders::_1;
 
 class NavigationNode : public rclcpp::Node {
 public:
-    ReturnNode() : Node("come_back_home") {
+    NavigationNode() : Node("come_back_home") {
 
         /*          PUBLISHER           */
         status_publisher = this->create_publisher<std_msgs::msg::String>("status", 10);
         cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("/backhome_vel", 10);
 
         /*          SUBSCRIBER          */
-        scan_sub_ = this->create_subscription<sensor_msgs::msg::LaserScan>(
-            "/scan", 10, std::bind(&NavigationNode::scanCallback, this, _1));
         
         odom_sub_ = this->create_subscription<nav_msgs::msg::Odometry>(
             "/odom", 10, std::bind(&NavigationNode::odomCallback, this, _1));
@@ -28,7 +30,7 @@ public:
             [this](std_msgs::msg::String::SharedPtr msg) {
                 std::lock_guard<std::mutex> lock(m);
                 status = msg->data;
-                if (int(status) == 2 && !come_back_home){ // non ancora iniziato
+                if (std::stoi(status) == 2 && !come_back_home){ // non ancora iniziato
                     startTime = time(NULL);
                     come_back_home = 1; 
                 }
@@ -40,9 +42,10 @@ public:
 
 private:
     std::string status;
-    rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr scan_sub_;
     rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr odom_sub_;
+    rclcpp::Subscription<std_msgs::msg::String>::SharedPtr status_subscriber;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_pub_;
+    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr status_publisher;
     rclcpp::TimerBase::SharedPtr timer_;
     std::mutex m; // Mutex per le variabili e per il controlLoop
     time_t startTime;
@@ -53,6 +56,7 @@ private:
 
     void odomCallback(const nav_msgs::msg::Odometry::SharedPtr msg) {
         if(come_back_home){
+            int reached_home = 0;
             const auto& q_msg = msg->pose.pose.orientation;
             tf2::Quaternion q(q_msg.x, q_msg.y, q_msg.z, q_msg.w);
             tf2::Vector3 forward_local(1.0, 0.0, 0.0);
@@ -66,13 +70,15 @@ private:
             std::lock_guard<std::mutex> lock(m);
             if(std::abs(angle) < 0.1){
                 oriented = true;
-            } esle {
+            } else {
                 oriented = false;
             }
             reached_home = (std::abs(p_msg.x) < 0.1 && std::abs(p_msg.y) < 0.1);
             if ((time(NULL) - startTime > 60) || reached_home){ // dopo un minuto finisce 
                 come_back_home = 0;
-                status_publisher->publish("3"); // Inizio a navigare
+                auto message = std_msgs::msg::String();
+                message.data = "3";
+                status_publisher->publish(message); // Inizio a navigare
             }
         }
     }

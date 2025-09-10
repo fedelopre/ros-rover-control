@@ -17,7 +17,7 @@ public:
             "/scan", 10, std::bind(&VelSubscriber::callback_scan, this, std::placeholders::_1));
 
         publisher_ = this->create_publisher<geometry_msgs::msg::Twist>("/nav_vel", 10);
-        direction = 0.1;
+        direction = 1;
     }
 
 private:
