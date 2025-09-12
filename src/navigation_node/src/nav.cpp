@@ -14,6 +14,7 @@ public:
             "/scan", 10, std::bind(&NavigationNode::scanCallback, this, _1));
         
         cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("/vel_modified", 10);
+        status_publisher = this->create_publisher<std_msgs::msg::String>("status", 10);
         
         timer_ = this->create_wall_timer(
             std::chrono::milliseconds(100), std::bind(&NavigationNode::controlLoop, this));
@@ -22,6 +23,7 @@ public:
 private:
     rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr scan_sub_;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_pub_;
+    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr status_publisher;
     rclcpp::TimerBase::SharedPtr timer_;
     std::mutex m;
 
@@ -36,6 +38,9 @@ private:
         std::lock_guard<std::mutex> lock(m);
         if (front < 0.8) {
             obstacle_detected_ = true;
+            auto message = std_msgs::msg::String();
+            message.data = '0';
+            status_publisher->publish(message);
         } else {
             obstacle_detected_ = false;
         }
