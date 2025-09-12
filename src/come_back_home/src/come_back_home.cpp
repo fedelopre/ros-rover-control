@@ -55,6 +55,7 @@ private:
 
 
     void odomCallback(const nav_msgs::msg::Odometry::SharedPtr msg) {
+        /* Nessuno per ora lo sveglia, serve pubblicare 2 su status */
         if(come_back_home){
             int reached_home = 0;
             const auto& q_msg = msg->pose.pose.orientation;
