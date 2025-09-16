@@ -126,7 +126,7 @@ public:
                     sem.release();
                     cControlLoop--;
                 }
-                RCLCPP_INFO(this->get_logger(), "Ricevuto Twist linear.x: %.2f", msg->linear.x);
+                RCLCPP_INFO(this->get_logger(), "Ricevuto OBSTACLE Twist linear.x: %.2f", msg->linear.x);
             });
 
         timer_ = this->create_wall_timer(
@@ -187,7 +187,7 @@ private:
         vel_pub_->publish(stamped_msg);
 
     
-        RCLCPP_INFO(this->get_logger(), "Pubblicato messaggio su /cmd_vel linear.x: %.2f", final_vel.linear.x);
+        RCLCPP_INFO(this->get_logger(), "Pubblicato messaggio su /cmd_vel linear.x: %.2f, STATUS = %s", final_vel.linear.x,status.c_str());
     }
 };
 
