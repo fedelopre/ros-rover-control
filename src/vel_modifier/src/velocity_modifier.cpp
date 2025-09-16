@@ -29,7 +29,6 @@ private:
     */
     void Velocity()
     {    
-        /* decidi se spostarlo in un timed Loop oppure tenere la call back della velocità */
         //qua modifica la velocità
         auto cmd = geometry_msgs::msg::Twist();
 

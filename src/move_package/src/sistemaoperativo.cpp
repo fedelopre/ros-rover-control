@@ -1,5 +1,6 @@
 #include "rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/twist.hpp"
+#include "geometry_msgs/msg/twist_stamped.hpp"
 #include "std_msgs/msg/string.hpp" 
 #include <chrono>
 #include <memory>
@@ -22,7 +23,7 @@ class SistemaOperativo : public rclcpp::Node
 
     rclcpp::TimerBase::SharedPtr timer_;
 
-    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr vel_pub_;
+    rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr vel_pub_;
 
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr scan_subscriber;
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr backhome_subscriber;
@@ -39,7 +40,7 @@ public:
         cControlLoop = 0;
         
         //vel_publisher = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
-        vel_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("/cmd_vel", 10);
+        vel_pub_ = this->create_publisher<geometry_msgs::msg::TwistStamped>("cmd_vel", 10);
 
         /*
             I seguenti Subscriber sono implementati con una
@@ -178,8 +179,14 @@ private:
         }
 
         obstacle_arrived = nav_arrived = scan_arrived = backhome_arrived = false;
+        geometry_msgs::msg::TwistStamped stamped_msg;
+        stamped_msg.header.stamp = this->now();
+        stamped_msg.header.frame_id = "odom"; 
+        stamped_msg.twist = final_vel;
 
-        vel_pub_->publish(final_vel);
+        vel_pub_->publish(stamped_msg);
+
+    
         RCLCPP_INFO(this->get_logger(), "Pubblicato messaggio su /cmd_vel linear.x: %.2f", final_vel.linear.x);
     }
 };
